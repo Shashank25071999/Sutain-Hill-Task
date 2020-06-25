@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Sustain Hill',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        
       ),
       home:Home(),
     );
