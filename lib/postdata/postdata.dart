@@ -34,7 +34,7 @@ showAlertDialog(BuildContext context) {
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
     title: Text("Success!"),
-    content: Text("Successfully rentered the data."),
+    content: Text("Successful to enter data!."),
     actions: [
       okButton,
     ],
