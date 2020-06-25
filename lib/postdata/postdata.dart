@@ -23,10 +23,34 @@ class _PostDataState extends State<PostData> {
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   DatabaseMethods databaseMethods = DatabaseMethods();
+showAlertDialog(BuildContext context) {
 
+  // set up the button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () { Navigator.pop(context);},
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Success!"),
+    content: Text("Successfully rentered the data."),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
   
   //upload the data into the usl through this helper function
-  uploadbuttonpressed() async {
+  uploadbuttonpressed(BuildContext context) async {
     if (_formkey.currentState.validate()) {
       setState(() {
         _isloading = true;
@@ -42,6 +66,7 @@ class _PostDataState extends State<PostData> {
         setState(() {
           _isloading = false;
         });
+        showAlertDialog(context);
       });
     }
   }
@@ -85,7 +110,7 @@ class _PostDataState extends State<PostData> {
                         width: 365,
                         child: GestureDetector(
                             onTap: () {
-                              uploadbuttonpressed();
+                              uploadbuttonpressed(context);
                             },
                             child: buttonforupload()),
                       ),
